@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paskibra SMA 6 Balikpapan</title>
+    <style>
+        :root {
+            --primary-blue: #0b4ca1;
+            --dark-blue: #083271;
+            --light-blue: #e8f0fe;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-blue);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            margin: 0.5rem auto;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links li {
+            margin: 0 1rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .logo-container {
+                margin-bottom: 1rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo-container">
+                <img src="logo paskas.jpg" alt="Logo Paskibra SMA 6 Balikpapan - Bendera Indonesia dengan siluet paskibraka" class="logo">
+                <span class="nav-brand">PASKIBRA SMA 6 BALIKPAPAN</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#team">Pengurus</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>PASKIBRA SMA 6 BALIKPAPAN</h1>
+            <p>Membina karakter kebangsaan melalui pengibaran bendera merah putih</p>
+            <a href="#about" class="hero-btn">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <h2 class="section-title">Tentang Kami</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Sejarah Paskibra SMA 6 Balikpapan</h3>
+                <p>Paskibra SMA Negeri 6 Balikpapan didirikan pada tahun 1995 dengan tujuan membina siswa-siswi untuk menjadi generasi yang cinta tanah air dan memiliki disiplin tinggi, Organisasi ini bertugas mengayomi sekolah dalam pengibaran bendera merah putih di berbagai acara kenegaraan di kota Balikpapan anggota paskibra terkenal dengan kedisiplinan dan kekompakannya kami rutin mengadakan latihan setiap minggu dan sering menjadi perwakilan sekolah dalam berbagai kegiatan kepemudaan di tingkat kota dan provinsi, kami turut berpartisipasi dalam mengharumkan nama SMA Negeri 6 Balikpapan dalam setiap langkah dan
+</p>
+                
+            </div>
+            <div class="about-image">
+                <img src="logo paskas.jpg" alt="Latihan Paskibra SMA 6 Balikpapan - Anggota paskibra sedang berbaris dengan seragam lengkap di lapangan sekolah">
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="team">
+        <h2 class="section-title">Pengurus Inti</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-image">
+            
+                    <img src="nopal.jpg" alt="Ketua Paskibra SMA 6 Balikpapan - Siswa berpakaian paskibra dengan sikap sempurna">
+                </div>
+                <div class="team-info">
+                    <h3>Naufal Azfa</h3>
+                    <p>Ketua Umum</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="yona.jpg" alt="Wakil Ketua Paskibra SMA 6 Balikpapan - siswi berpakaian paskibra ">
+                </div>
+                <div class="team-info">
+                    <h3>Yona Adelia</h3>
+                    <p>Wakil Ketua</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="hana.jpg" alt="Sekretaris 1 Paskibra SMA 6 Balikpapan - Siswi dengan laptop dan dokumen">
+                </div>
+                <div class="team-info">
+                    <h3>Raihanah Putri</h3>
+                    <p>Sekretaris 1</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="hani.jpg" alt="Sekretaris 2 Paskibra SMA 6 Balikpapan - Siswi sedang mencatat agenda">
+                </div>
+                <div class="team-info">
+                    <h3>Hanifah Kamila</h3>
+                    <p>Sekretaris 2</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="ina.jpg" alt="Bendahara 1 Paskibra SMA 6 Balikpapan - Siswi sedang memeriksa laporan keuangan">
+                </div>
+                <div class="team-info">
+                    <h3>Destina Maharani</h3>
+                    <p>Bendahara 1</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="maya.jpg" alt="Bendahara 2 Paskibra SMA 6 Balikpapan - Siswa sedang menghitung dana">
+                </div>
+                <div class="team-info">
+                    <h3>Via Nur Ismaya</h3>
+                    <p>Bendahara 2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="gallery">
+        <h2 class="section-title">Galeri Kegiatan</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="upacara.jpg" alt="Upacara bendera  - anggota paskibra SMA 6 sedang mengibarkan bendera">
+            </div>
+            <div class="gallery-item">
+                <img src="foto bersama.jpg" alt="Latihan baris berbaris - anggota paskibra ">
+            </div>
+            <div class="gallery-item">
+                <img src="pantai.jpg" alt="liburan  paskibra - tenda dan anggota sedang berlibur">
+            </div>
+            <div class="gallery-item">
+                <img src="DELAS.jpg" alt="Perlombaan PBB antar sekolah - paskibra SMA 6 sedang tampil">
+            </div>
+            <div class="gallery-item">
+                <img src="mubes.jpg" alt="Kegiatan musyawarah - anggota paskibra sedang bermusyawarah">
+            </div>
+            <div class="gallery-item">
+                <img src="parade.jpg" alt="Penampilan Parade eskul - parade eskul 2025">
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <div class="contact-info">
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Alamat</h3>
+                <p>SMA Negeri 6 Balikpapan<br>Jl. Soekarno-Hatta KM 4,5<br>Balikpapan Utara</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Telepon</h3>
+                <p>+62 8513-5003-6024 ( Naufal )</p>
+                <p>+62 853-8765-1730 ( Yona )</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>paskashexa@gmail.com</p>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-instagram"></i>
+                <h3>Instagram</h3>
+                <p>@paskashexa_</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <ul class="footer-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#team">Pengurus</a></li>
+            <li><a href="#gallery">Galeri</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <p class="copyright">&copy; 2025 Paskibra SMA 6 Balikpapan. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky header animation
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
